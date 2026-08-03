@@ -1,0 +1,36 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "one-api-workers",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-04-28",
+  "workers_dev": true,
+  "vars": {
+    "USAGE_ANALYTICS_DATASET": "usage_events_by_token"
+  },
+  "secrets": {
+    "required": [
+      "ADMIN_TOKEN",
+      "CF_API_TOKEN",
+      "CF_ACCOUNT_ID"
+    ]
+  },
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "single-page-application",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "one-api-workers",
+      "database_id": "b5f5215b-d074-44ad-8969-fa2264808210"
+    }
+  ],
+  "analytics_engine_datasets": [
+    {
+      "binding": "USAGE_ANALYTICS",
+      "dataset": "usage_events_by_token"
+    }
+  ]
+}
